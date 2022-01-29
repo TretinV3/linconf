@@ -1,0 +1,17 @@
+{
+    "nmap" : {
+        "args" : true,
+        "action" : "nmap",
+        "permission" : 1
+    },
+    "reset" : {
+        "args" : false,
+        "action" : "reset",
+        "permission" : 1
+    },
+    "nc" : {
+        "args" : true,
+        "action" : "nc",
+        "permission" : 1
+    }
+}

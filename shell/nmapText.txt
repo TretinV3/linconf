@@ -1,0 +1,8 @@
+
+Starting Nmap 5.0.0 ( http://nmap.org ) at ${date}
+Interesting ports on 127.0.0.1:
+PORT    STATES  SERVICE
+80/tcp  open    http
+MAC Address: 76:F4:A6:9A:22:E6 (Unknow)
+
+Nmap done: 1 IP address (1 host up) scanned in 1.58 seconds

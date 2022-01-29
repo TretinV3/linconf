@@ -1,0 +1,66 @@
+{
+    "lore": [
+        "Ah! te voilà",
+        "Alors je sais que tu n'ais que stagière mais aujourd'hui, c'est toi qui va travailler a ma place (mais je te guiderais ne t'inquite pas)",
+        "On doit regarder si un site d'hebergeur a des failles de sécurité"
+    ],
+    "start": [
+        "Pour cela, on doit trouver les ports ouvert et qui pourrons donc nous permettre d'entrer",
+        "Nous allons donc utiliser la commande `nmap` pour scanner les ports ouvert.",
+        "vas-y, utilise la"
+    ],
+    "nmaptest": [
+        "A oui c'est vrai, j'ai oublier de te donner l'ip du server",
+        "Tiens, c'est `127.0.0.1`"
+    ],
+    "nmap": [
+        "Comme tu peux le voire, il n'y a qu'un seul port d'ouvert : le port 80",
+        "Il est habituelement utilier pour les server web donc on peut regarder si le server n'a pas un site internet !",
+        "Il en a un ! http://127.0.0.1/",
+        "Je te laisser regarder, dit moi si tu trouve quelque chose d'interessant"
+    ],
+    "loginpage": [
+        "Tiens, tiens...",
+        "On a quelque chose d'interessant ici...",
+        "Par contre on ne peut pas se créer de compte",
+        "Mais la plupare du temps, le SQL est utilisé pour les connextion/inscription",
+        "Comme on a rien d'autre essayon de se créer un compte avec cette faille",
+        "On verra ensuite quoi faire"
+    ],
+    "sqltest": [
+        "Pour voire si le site utiliser du SQL, on peut tous simplement utiliser les commentaire SQL et voire si cela nous donne un message d'erreur car cela va rendre la requette invalide",
+        "Vas-y met les commentaire dans le nom d'utilisateur",
+        "A oui, les commentaire en SQL c'est `--`"
+    ],
+    "faillesql": [
+        "Super ! ça marche !",
+        "Maintenant créons nous un nouvel utilisateur",
+        "le mot de passe sera toto et le nom toto comme ça on ne risque pas de l'oublier",
+        "voila la commande : `INSERT INTO users VALUES ('toto', 'abcd1234', 0, 100)`",
+        "Avec cette commande on va rajouter dans la table `users` une ligne avec comme nom `toto`, comme mot de passe `abcd1234`, comme permission 0 donc administrateur et en id 100"
+    ],
+    "usercreated": [
+        "bien jouer !",
+        "maintenant essayon de se connecter avec nos propre identifiant (`toto` et `abcd1234`)"
+    ],
+    "user": [
+        "bon, maintenant qu'est ce qu'on fait ?",
+        "A j'ai peut etre une idée !",
+        "comme tu peux le voir, on peux changer son avatar",
+        "Et si a la place de mettre une image on envoyait un fichier .php ?"
+    ],
+    "nc": [
+        "Avant d'établir une reverse shell qui nous permetera d'executer des commande sur leur serveur,",
+        "Nous devont prévenir notre ordinateur pour lui dire d'écouter pour voire si un ordinateur nous demande d'executer des commande a sa place",
+        "Tu dois donc faire la commande `nc -l 5555` pour lui dire d'écouter sur le port 5555"
+    ],
+    "reverse" :[
+        "Super, maitenant il ne reste plus qu'a uploader notre petit fichier php",
+        "Tiens, j'en ai préparé un : <a href='../exploit.php' download>exploit.php</a>",
+        "A la place de mettre une image pour la photo de profil de ce compte met ce petit fichier fait maison..."
+    ],
+    "shell" : [
+        "Bien joué !",
+        "Félicitation on a réussi a s'inflitré"
+    ]
+}

@@ -1,0 +1,119 @@
+<ul>
+    <li><a href="#" onclick="loadPage('safeSecur/home')" style="float:left;">Accueil</a></li>
+    <li><a href="#offres" onclick="loadPage('safeSecur/home')" style="float:left;">Nos offres</a></li>
+    <li><a href="" onclick="loadPage('safeSecur/login')" class="active" style="float:right;">Connexion</a></li>
+</ul>
+
+<div class="loginFormulaire center" style="margin-top: 100px;">
+    <h2>Connection</h2>
+    <form id="form" method="post" name="loginForm">
+        <label>Nom :</label>
+        <input type="text" name="username" id="username" />
+        <br>
+        <label>Mot de passe :</label>
+        <input type="password" name="password" id="password" />
+        <br>
+        <input type="button" value="Connection" id="submit" onclick="validate()" />
+    </form>
+    <div id="out" class="out">
+    </div>
+</div>
+
+<script>
+
+    async function validate() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if(username == "--") {
+            document.getElementById("out").innerHTML += '<br><i class="fas fa-exclamation-triangle"></i> Erreur';
+            setEtape("faillesql");
+            bc.postMessage("chat.send.faillesql");
+            return;
+        }
+
+
+        if(username == "INSERT INTO users VALUES ('toto', 'abcd1234', 0, 100)"){
+            document.getElementById("out").innerHTML += '<br><i class="fas fa-exclamation-triangle"></i> Erreur';
+            setEtape("usercreated");
+            bc.postMessage("chat.send.usercreated");
+            return;
+        }
+
+        if (username == "toto" && password == "abcd1234" && getCookie("etape")=="usercreated") {
+            alert("Login successfully");
+
+            loadPage("safeSecur/user")
+
+            
+            await sleep(6000);
+            setEtape("user");
+            bc.postMessage("chat.send.user");
+            await sleep(6000);
+            setEtape("nc");
+            bc.postMessage("chat.send.nc");
+
+            return;
+        } else {
+            document.getElementById("out").innerHTML += '<br><i class="fas fa-exclamation-triangle"></i> Identifiants incorectes';
+        }
+    }
+</script>
+
+
+<style>
+    .loginFormulaire {
+        padding: 15px;
+        border-radius: 20px;
+        display: block;
+        padding: 0 auto;
+        background-color: darkblue;
+        width: 40%;
+    }
+
+    label {
+        font-family: 'Roboto', sans-serif;
+        color: darkorange;
+    }
+
+    input {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    .center {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+    }
+</style>

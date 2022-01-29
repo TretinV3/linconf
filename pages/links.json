@@ -1,0 +1,10 @@
+{
+    "init": "home",
+    "start": "wait",
+    "nmaptest": "wait",
+    "nmap": "safeSecur/home",
+    "loginpage": "safeSecur/login",
+    "usercreated": "safeSecur/login",
+    "nc": "safeSecur/user",
+    "end" : "end"
+}

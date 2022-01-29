@@ -1,0 +1,173 @@
+<ul>
+    <li><a href="#" onclick="loadPage('safeSecur/home')" class="active" style="float:left;">Accueil</a></li>
+    <li><a href="#offres" onclick="loadPage('safeSecur/home')" style="float:left;">Nos offres</a></li>
+    <li><a onclick="loadPage('safeSecur/login')" style="float:right;">Connexion</a></li>
+</ul>
+
+
+<div class="section1">
+
+    <h1 class="title">SafeSecur</h1>
+    <h3 class="subtitle">le plus grand hebergeur sécurisé</h3>
+
+    <a href="#offres" class="adown"><i class="fas fa-angle-down fa-5x center"></i></a>
+</div>
+
+<div id="offres" class="offres">
+
+    <br><br><br>
+    <h2 class="title" style="font-size: 40px;">Nos offres :</h2>
+    <br>
+    <div class="serverList">
+        <div class="wrapper">
+            <div class="serverIcon">
+                <i class="fas fa-server fa-10x"></i>
+            </div>
+            <div class="textServer">
+                <button type="button" class="serverButton">Minecraft</button>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="serverIcon">
+                <i class="fas fa-server fa-10x"></i>
+            </div>
+            <div class="textServer">
+                <button type="button" class="serverButton">VPS</button>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="serverIcon">
+                <i class="fas fa-server fa-10x"></i>
+            </div>
+            <div class="textServer">
+                <button type="button" class="serverButton">Node-js</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .serverButton {
+        /*color: white;*/
+        background-color: darkorange;
+        width: auto;
+        height: auto;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.1s;
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .serverButton:hover{
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .textServer {
+        color: black;
+        font-size: 20px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .serverList {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+
+    }
+
+    .wrapper {
+        display: inline-block;
+        margin: 5%;
+
+    }
+
+    .section1 {
+        top: 0px;
+        height: 100vh;
+        background-color: blueviolet;
+    }
+
+    body {
+        background-color: white;
+        margin: 0;
+    }
+
+    .offres {
+        height: 100vh;
+        background-color: rgb(119, 0, 255);
+
+    }
+
+    .adown {
+        text-decoration: none;
+        top: 90vh;
+        position: absolute;
+        left: 50%;
+    }
+
+    .adown:active {
+        color: darkorange;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .fa-server {
+        color: rgb(0, 0, 117);
+    }
+
+    .title {
+        text-align: center;
+        color: darkorange;
+        font-size: 60px;
+    }
+
+    .subtitle {
+        text-align: center;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    /* Change the link color to #111 (black) on hover */
+    li a:hover {
+        background-color: #111;
+    }
+
+    .center {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+    }
+</style>

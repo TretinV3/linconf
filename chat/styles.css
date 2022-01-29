@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+@keyframes slide-up {
+    from {
+        
+        opacity: .25;
+        line-height: 100px;
+    }
+    to {
+        
+        opacity: 1;
+        line-height: 25px;
+    }
+}
+
+.slide-up {
+    animation: slide-up 0.8s;
+}
+
+#chat{
+    display: none !important;
+}
+

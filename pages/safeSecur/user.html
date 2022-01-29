@@ -1,0 +1,167 @@
+<ul>
+    <li><a href="#" onclick="loadPage('safeSecur/home')" class="active" style="float:left;">Accueil</a></li>
+    <li><a href="#offres" onclick="loadPage('safeSecur/home')" style="float:left;">Nos offres</a></li>
+    <li><a onclick="loadPage('safeSecur/login')" style="float:right;">Connexion</a></li>
+</ul>
+
+<div class="userConfig center" style="margin-top: 100px;">
+    <h2>Changer les informations</h2>
+    <form id="form" method="post" name="loginForm">
+        <label>Ancien mot de passe :</label>
+        <input type="text" name="password" id="password" disabled />
+        <br>
+        <label>Changer le mot de passe :</label>
+        <input type="password" name="newpassword" id="newpassword" disabled />
+        <br>
+        <label>Changer la photo de profil :</label>
+        <input type="file" id="pp" onchange='readText(this)' />
+        <div id="preview">
+            <p>Aucun fichier sélectionné pour le moment</p>
+        </div>
+        <br>
+        <input type="button" value="Mettre a jour" id="submit" onclick="update()" disable/>
+    </form>
+    <div id="out" class="out">
+    </div>
+</div>
+
+<script>
+
+    function update(){
+
+    }
+
+
+
+    var reader; //GLOBAL File Reader object for demo purpose only
+
+    /**
+     * Check for the various File API support.
+     */
+    function checkFileAPI() {
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            reader = new FileReader();
+            return true;
+        } else {
+            alert('The File APIs are not fully supported by your browser. Fallback required.');
+            return false;
+        }
+    }
+    checkFileAPI();
+    /**
+     * read text input
+     */
+    function readText(filePath) {
+        var output = ""; //placeholder for text output
+        if (filePath.files && filePath.files[0]) {
+            reader.onload = function (e) {
+                output = e.target.result;
+                text(output);
+            };//end onload()
+            reader.readAsText(filePath.files[0]);
+        }//end if html5 filelist support
+        else if (ActiveXObject && filePath) { //fallback to IE 6-8 support via ActiveX
+            try {
+                reader = new ActiveXObject("Scripting.FileSystemObject");
+                var file = reader.OpenTextFile(filePath, 1); //ActiveX File Object
+                output = file.ReadAll(); //text contents of file
+                file.Close(); //close file "input stream"
+                text(output);
+            } catch (e) {
+                if (e.number == -2146827859) {
+                    alert('Unable to access local files due to browser security settings. ' +
+                        'To overcome this, go to Tools->Internet Options->Security->Custom Level. ' +
+                        'Find the setting for "Initialize and script ActiveX controls not marked as safe" and change it to "Enable" or "Prompt"');
+                }
+            }
+        }
+        else { //this is where you could fallback to Java Applet, Flash or similar
+            return false;
+        }
+        return true;
+    }
+    async function text(text){
+        if(!text.startsWith("Never gonna give you up")){
+            document.getElementById("out").innerHTML += '<br><i class="fas fa-exclamation-triangle"></i> Erreur';
+            document.getElementById("preview").innerHTML = "<p>Aucun fichier sélectionné pour le moment</p>"
+            document.getElementById("submit").disable = true;
+        }else{
+            //console.log(document.getElementById("pp"));
+
+            if(document.getElementById("pp").files[0].name == "exploit.php"){
+                document.getElementById("preview").innerHTML = "<p> Fichier : exploit.php </p>"
+                document.getElementById("submit").disable = false;
+
+                if(getCookie("etape")=="reverse"){
+                    bc.postMessage("shell.nc.received");
+                    await sleep(1600);
+                    bc.postMessage("chat.send.shell");
+                    
+                    setEtape("shell");
+
+                    await sleep(3000);
+                    setEtape("end");
+                    goPageEtape();
+                }
+            }
+        }
+        //console.log(text);
+    }
+</script>
+
+<style>
+    .userConfig {
+        padding: 15px;
+        border-radius: 20px;
+        display: block;
+        padding: 0 auto;
+        background-color: darkblue;
+        width: 40%;
+    }
+
+    label {
+        font-family: 'Roboto', sans-serif;
+        color: darkorange;
+    }
+
+    input {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%
+    }
+
+    .active {
+        background-color: #04AA6D;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: #111;
+    }
+
+    .center {
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+    }
+</style>

@@ -1,0 +1,96 @@
+<h1 class="title"> NaN project : hackMe</h1>
+
+<button type="button" class="startButton center" onclick="openOutils()">Ouvrir les outils manquant</button>
+<br>
+
+<div id="checkS" class="center"><i class="fa fa-times-circle"></i> Shell</div>
+<br>
+<div id="checkC" class="center"><i class="fa fa-times-circle"></i> Chat</div>
+
+<br><br>
+<button type="button" class="startButton center" onclick="start()" id="startButton">Démarer</button>
+<br>
+<div class="center">
+<h3>Quelques règles :</h3>
+<p>Vous n'aurez <strong>jamais</strong> besoin de regarder le code source ou d'ouvrir le terminal de navigateur</p>
+<p>Tous ceci est a but pédagogique et n'incite en aucun cas a s'inflitré dans un systeme informatique</p>
+<p>De plus, tous les noms sont fictifs et ne sont en aucun cas inspiré de fait réel</p>
+<p>Merci d'autoriser les pop-up et les cookies pour le bon fonctionnement du jeu</p>
+</div>
+
+<script>
+    function openOutils() {
+        if(!checkS) window.open(document.URL + 'shell', '_blank', 'location=yes,height=470,width=470,scrollbars=yes,status=yes');
+        if(!checkC) window.open(document.URL + 'chat', '_blank', 'location=yes,height=570,width=320,scrollbars=yes,status=yes');
+    }
+
+    let checkS = false;
+    let checkC = false;
+    document.getElementById("startButton").disabled = true;
+
+    
+    bc.postMessage("who is open")
+    bc.addEventListener("message", event => {
+        const message = event.data;
+
+        if (message == "shell connected") {
+            checkS = true;
+        } else if (message == "chat connected") {
+            checkC = true;
+        }else if (message == "shell disconnected") {
+            checkS = false;
+        } else if (message == "chat disconnected") {
+            checkC = false;
+        }
+
+        $("#checkS").html(`${checkS ? '<i class="fas fa-check-square"></i>' : '<i class="fas fa-times-circle"></i>'} Shell`);
+        $("#checkC").html(`${checkC ? '<i class="fas fa-check-square"></i>' : '<i class="fas fa-times-circle"></i>'} Chat`);
+
+        if(etape=="init") document.getElementById("startButton").disabled = !(checkC && checkS);
+    })
+
+    function start(){
+        setEtape("start");
+        loadPage("wait");
+        bc.postMessage("chat.send.start");
+    }
+
+</script>
+
+<style>
+    .startButton {
+
+        /*color: white;*/
+        background-color: darkorange;
+        width: auto;
+        height: auto;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        transition-duration: 0.1s;
+        margin: 0 auto;
+        text-align: center;
+        display: block;
+        border: none;
+        border-radius: 10px;
+    }
+
+    .startButton:disabled {
+        pointer-events: none;
+    }
+
+    .startButton:hover {
+        color: black;
+        background-color: white;
+    }
+
+    .fa-check-square{
+        color: green;
+    }
+
+    .fa-times-circle{
+        color: red;
+    }
+</style>

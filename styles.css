@@ -1,0 +1,42 @@
+body {
+    background-color: blueviolet;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.discord {
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    margin-top: 5%;
+    text-decoration: underline;
+
+}
+
+
+
+.center {
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+} 
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+  
+  /* Facebook */
+  .fa-discord {
+    background: #3B5998;
+    color: white;
+  }
+  
+  /* Twitter */
+  .fa-github {
+    
+    color: #E0AB18;
+  } 
