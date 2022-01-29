@@ -26,7 +26,7 @@ bc.onmessage = async (event) => {
 }
 
 let pageLinks;
-$.getJSON("./pages/links", data => {
+$.getJSON("./pages/links.json", data => {
     pageLinks = data;
 });
 
