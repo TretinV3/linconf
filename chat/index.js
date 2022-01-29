@@ -35,8 +35,11 @@ async function initChat() {
 }   
 
 async function sendtext(textId) {
+    let hr = document.geteElementById("msgnew)
+    hr.parentNode.removeChild(hr)
+    $("#chat").before(`<hr id=msgnew>`)
     for (let i = 0; i < text[textId].length; i++) {
-        await sleep(text[textId][i].length * 10)
+        await sleep(text[textId][i].length * 100)
         sendMessage(text[textId][i]);
     }
 }
