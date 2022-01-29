@@ -1,6 +1,6 @@
 
 let text;
-$.getJSON("./text", data => {
+$.getJSON("./text.json", data => {
     text = data;
 });
 
