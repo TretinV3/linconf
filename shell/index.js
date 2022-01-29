@@ -1,6 +1,6 @@
 
 let commands;
-$.getJSON("./commands", data => {
+$.getJSON("./commands.json", data => {
     commands = data;
 });
 
